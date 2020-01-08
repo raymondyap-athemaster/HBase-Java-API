@@ -33,13 +33,13 @@ public class InsertData
 
         // adding values using add() method
         // accepts column family name, qualifier/row name ,value
-        put.addColumn(Bytes.toBytes("personal"), Bytes.toBytes("name"),Bytes.toBytes("raju"));
+        put.addColumn(Bytes.toBytes("personal data"), Bytes.toBytes("name"),Bytes.toBytes("raju"));
 
-        put.addColumn(Bytes.toBytes("personal"), Bytes.toBytes("city"),Bytes.toBytes("hyderabad"));
+        put.addColumn(Bytes.toBytes("personal data"), Bytes.toBytes("city"),Bytes.toBytes("hyderabad"));
 
-        put.addColumn(Bytes.toBytes("professional"),Bytes.toBytes("designation"), Bytes.toBytes("manager"));
+        put.addColumn(Bytes.toBytes("professional data"),Bytes.toBytes("designation"), Bytes.toBytes("manager"));
 
-        put.addColumn(Bytes.toBytes("professional"),Bytes.toBytes("salary"), Bytes.toBytes("50000"));
+        put.addColumn(Bytes.toBytes("professional data"),Bytes.toBytes("salary"), Bytes.toBytes("50000"));
 
         TableName tableName = TableName.valueOf(args[0]);
         //得到 table
