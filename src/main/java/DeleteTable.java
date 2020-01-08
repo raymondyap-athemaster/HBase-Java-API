@@ -27,7 +27,7 @@ public class DeleteTable
         connection = ConnectionFactory.createConnection(configuration);
         admin = connection.getAdmin();
 
-        Table table = connection.getTable(TableName.valueOf("test"));
+        Table table = connection.getTable(TableName.valueOf(args[0]));
 
         connection = ConnectionFactory.createConnection(configuration);
 
