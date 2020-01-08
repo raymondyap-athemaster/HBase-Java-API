@@ -17,9 +17,9 @@ public class CreateTable
         // Instantiating configuration class
         Configuration conf = HBaseConfiguration.create();
 
-        conf.set("hbase.zookeeper.quorum","35.229.149.35");
-        conf.set("hbase.zookeeper.property.clientPort","2181");
-        conf.set("hbase.master", "35.229.149.35:16010");
+        //conf.set("hbase.zookeeper.quorum","35.229.149.35");
+        //conf.set("hbase.zookeeper.property.clientPort","2181");
+        //conf.set("hbase.master", "35.229.149.35:16010");
 
         // Instantiating configuration class
         //Configuration con = HBaseConfiguration.create();
