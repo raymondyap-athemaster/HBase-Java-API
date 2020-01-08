@@ -1,37 +1,29 @@
 import java.io.IOException;
 
 import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.hbase.HBaseConfiguration;
-import org.apache.hadoop.hbase.HColumnDescriptor;
-import org.apache.hadoop.hbase.HTableDescriptor;
+import org.apache.hadoop.hbase.*;
 import org.apache.hadoop.hbase.client.*;
-import org.apache.hadoop.hbase.TableName;
-
 import org.apache.hadoop.hbase.util.Bytes;
 
 public class CreateTable
 {
-    static Configuration conf = null;
-    static Connection conn = null;
+    public static Configuration configuration;
+    public static Connection connection;
+    public static Admin admin;
+
     public static void main(String[] args) throws IOException
     {
-        // Instantiating configuration class
-        conf = HBaseConfiguration.create();
-
-        conf.set("hbase.zookeeper.quorum","35.229.149.35");
-        conf.set("hbase.zookeeper.property.clientPort","2181");
-        conf.set("hbase.master", "35.229.149.35:16010");
-
-        conn = ConnectionFactory.createConnection(conf);
-        Admin admin = conn.getAdmin();
+        configuration = HBaseConfiguration.create();
+        //configuration.setConfiguration("hbase.rootdir","hdfs://idx046:9000/hbase");
+        configuration.set("hbase.zookeeper.quorum","35.229.149.35");
+        configuration.set("hbase.zookeeper.property.clientPort","2181");
+        configuration.set("hbase.master", "35.229.149.35:16010");
+        connection = ConnectionFactory.createConnection();
+        admin = connection.getAdmin();
         TableName tableName = TableName.valueOf("emp2");
-        TableDescriptorBuilder  tdb  =TableDescriptorBuilder.newBuilder(tableName);
-        ColumnFamilyDescriptorBuilder cdb =  ColumnFamilyDescriptorBuilder.newBuilder(Bytes.toBytes("personal data"));
-        ColumnFamilyDescriptor  cfd = cdb.build();
-        tdb.setColumnFamily(cfd);
-        TableDescriptor td = tdb.build();
-        admin.createTable(td);
-
-        System.out.println(" Table created ");
+        HTableDescriptor hTableDescriptor = new HTableDescriptor(tableName);
+        HColumnDescriptor hColumnDescriptor = new HColumnDescriptor("personal data");
+        hTableDescriptor.addFamily(hColumnDescriptor);
+        admin.createTable(hTableDescriptor);
     }
 }
