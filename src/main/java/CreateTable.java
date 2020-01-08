@@ -16,6 +16,10 @@ public class CreateTable
         // Instantiating configuration class
         Configuration conf = HBaseConfiguration.create();
 
+        conf.set("hbase.zookeeper.quorum","local-1.c.meta-buckeye-261502.internal");
+        conf.set("hbase.zookeeper.property.clientPort","2181");
+        conf.set("hbase.master", "local-1.c.meta-buckeye-261502.internal:16010");
+
         // Instantiating HbaseAdmin class
         //con.set();
         //HBaseAdmin admin = new HBaseAdmin(con);
@@ -23,6 +27,10 @@ public class CreateTable
         Admin admin = conn.getAdmin();
 
         // Instantiating table descriptor class
+        /*
+        HTableDescriptor tableDescriptor = new
+                HTableDescriptor(TableName.valueOf("emp2"));
+         */
         HTableDescriptor tableDescriptor = new
                 HTableDescriptor(TableName.valueOf("emp2"));
 
