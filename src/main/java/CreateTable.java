@@ -17,26 +17,20 @@ public class CreateTable
         // Instantiating configuration class
         Configuration conf = HBaseConfiguration.create();
 
-        //conf.set("hbase.zookeeper.quorum","35.229.149.35");
-        //conf.set("hbase.zookeeper.property.clientPort","2181");
-        //conf.set("hbase.master", "35.229.149.35:16010");
+        conf.set("hbase.zookeeper.quorum","35.229.149.35");
+        conf.set("hbase.zookeeper.property.clientPort","2181");
+        conf.set("hbase.master", "35.229.149.35:16010");
 
-        // Instantiating configuration class
-        //Configuration con = HBaseConfiguration.create();
+        Connection conn = ConnectionFactory.createConnection(conf);
+        Admin admin = conn.getAdmin();
+        TableName tableName = TableName.valueOf("emp2");
+        TableDescriptorBuilder  tdb  =TableDescriptorBuilder.newBuilder(tableName);
+        ColumnFamilyDescriptorBuilder cdb =  ColumnFamilyDescriptorBuilder.newBuilder(Bytes.toBytes("personal data"));
+        ColumnFamilyDescriptor  cfd = cdb.build();
+        tdb.setColumnFamily(cfd);
+        TableDescriptor td = tdb.build();
+        admin.createTable(td);
 
-        // Instantiating HbaseAdmin class
-        HBaseAdmin admin = new HBaseAdmin(conf);
-
-        // Instantiating table descriptor class
-        HTableDescriptor tableDescriptor = new
-                HTableDescriptor(TableName.valueOf("emp2"));
-
-        // Adding column families to table descriptor
-        tableDescriptor.addFamily(new HColumnDescriptor("personal2"));
-        tableDescriptor.addFamily(new HColumnDescriptor("professional2"));
-
-        // Execute the table through admin
-        admin.createTable(tableDescriptor);
         System.out.println(" Table created ");
     }
 }
