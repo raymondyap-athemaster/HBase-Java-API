@@ -32,7 +32,7 @@ public class DeleteTable
         connection = ConnectionFactory.createConnection(configuration);
 
 
-        TableName tableName = TableName.valueOf("emp2");
+        TableName tableName = TableName.valueOf(args[0]);
         admin.disableTable(tableName);
         admin.deleteTable(tableName);
         System.out.println("Table deleted.\n");
