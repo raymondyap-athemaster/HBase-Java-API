@@ -13,6 +13,7 @@ public class CreateTable
 
     public static void main(String[] args) throws IOException
     {
+
         configuration = HBaseConfiguration.create();
         //configuration.setConfiguration("hbase.rootdir","hdfs://idx046:9000/hbase");
         configuration.set("hbase.zookeeper.quorum","35.229.149.35");
@@ -25,11 +26,11 @@ public class CreateTable
         HTableDescriptor hTableDescriptor = new HTableDescriptor(tableName);
         HColumnDescriptor hColumnDescriptor = new HColumnDescriptor("personal data");
         hTableDescriptor.addFamily(hColumnDescriptor);
-
+        hTableDescriptor.addFamily(new HColumnDescriptor("professional data"));
+        admin.createTable(hTableDescriptor);
 
 
         // Instantiating configuration class
-
         /*
         Configuration con = HBaseConfiguration.create();
 
@@ -47,7 +48,6 @@ public class CreateTable
         // Execute the table through admin
         admin.createTable(tableDescriptor);
         System.out.println(" Table created ");
-
          */
     }
 }
