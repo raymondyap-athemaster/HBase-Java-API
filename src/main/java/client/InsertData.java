@@ -47,6 +47,7 @@ public class InsertData
         //执行插入
         table.put(put);
         System.out.println("data inserted");
+        connection.close();
 
     }
 }

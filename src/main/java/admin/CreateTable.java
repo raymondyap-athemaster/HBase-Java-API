@@ -31,6 +31,7 @@ public class CreateTable
         hTableDescriptor.addFamily(new HColumnDescriptor("professional data"));
         admin.createTable(hTableDescriptor);
         System.out.println(" Table created ");
+        connection.close();
 
         // Instantiating configuration class
         /*

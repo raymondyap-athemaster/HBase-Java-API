@@ -39,5 +39,6 @@ public class DeleteTable
         admin.deleteTable(tableName);
         System.out.println("Table deleted.\n");
 
+        connection.close();
     }
 }

@@ -28,5 +28,6 @@ public class ShutDown
         // Shutting down HBase
         System.out.println("Shutting down hbase");
         admin.shutdown();
+        connection.close();
     }
 }

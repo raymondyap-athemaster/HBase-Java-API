@@ -32,6 +32,6 @@ public class ListTable
         for (HTableDescriptor hTableDescriptor : tableDescriptor) {
             System.out.println(hTableDescriptor.getNameAsString());
         }
-
+        connection.close();
     }
 }
