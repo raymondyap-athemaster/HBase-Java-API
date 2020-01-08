@@ -22,7 +22,7 @@ public class CreateTable
 
         connection = ConnectionFactory.createConnection(configuration);
         admin = connection.getAdmin();
-        TableName tableName = TableName.valueOf("emp2");
+        TableName tableName = TableName.valueOf(args[0]);
         HTableDescriptor hTableDescriptor = new HTableDescriptor(tableName);
         HColumnDescriptor hColumnDescriptor = new HColumnDescriptor("personal data");
         hTableDescriptor.addFamily(hColumnDescriptor);
