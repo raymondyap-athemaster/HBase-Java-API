@@ -29,11 +29,11 @@ public class CreateTable
 
         // Instantiating table descriptor class
         HTableDescriptor tableDescriptor = new
-                HTableDescriptor(TableName.valueOf("emp"));
+                HTableDescriptor(TableName.valueOf("emp2"));
 
         // Adding column families to table descriptor
-        tableDescriptor.addFamily(new HColumnDescriptor("personal"));
-        tableDescriptor.addFamily(new HColumnDescriptor("professional"));
+        tableDescriptor.addFamily(new HColumnDescriptor("personal2"));
+        tableDescriptor.addFamily(new HColumnDescriptor("professional2"));
 
         // Execute the table through admin
         admin.createTable(tableDescriptor);
