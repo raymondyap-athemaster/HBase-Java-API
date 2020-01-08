@@ -22,7 +22,7 @@ public class CreateTable
         conf.set("hbase.master", "35.229.149.35:16010");
 
         // Instantiating configuration class
-        Configuration con = HBaseConfiguration.create();
+        //Configuration con = HBaseConfiguration.create();
 
         // Instantiating HbaseAdmin class
         HBaseAdmin admin = new HBaseAdmin(conf);
