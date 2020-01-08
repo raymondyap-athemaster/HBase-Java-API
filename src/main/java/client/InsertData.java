@@ -41,7 +41,7 @@ public class InsertData
 
         put.addColumn(Bytes.toBytes("professional"),Bytes.toBytes("salary"), Bytes.toBytes("50000"));
 
-        TableName tableName = TableName.valueOf("test");
+        TableName tableName = TableName.valueOf(args[0]);
         //得到 table
         Table table = connection.getTable(tableName);
         //执行插入
