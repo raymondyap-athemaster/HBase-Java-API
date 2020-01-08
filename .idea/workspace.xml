@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="bc547bdc-b748-46ea-91ed-f2b3abadce99" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/InsertData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/InsertData.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +116,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1578453957753</updated>
-      <workItem from="1578453962025" duration="12463000" />
+      <workItem from="1578453962025" duration="12916000" />
     </task>
     <servers />
   </component>

@@ -26,28 +26,27 @@ public class InsertData
 
         connection = ConnectionFactory.createConnection(configuration);
 
-        // Instantiating HTable class
-        HTable hTable = new HTable(configuration, args[0]);
 
         // Instantiating Put class
         // accepts a row name.
-        Put p = new Put(Bytes.toBytes("row1"));
+        Put put = new Put(Bytes.toBytes("row1"));
 
         // adding values using add() method
         // accepts column family name, qualifier/row name ,value
-        p.add(Bytes.toBytes("personal"), Bytes.toBytes("name"),Bytes.toBytes("raju"));
+        put.addColumn(Bytes.toBytes("personal"), Bytes.toBytes("name"),Bytes.toBytes("raju"));
 
-        p.add(Bytes.toBytes("personal"), Bytes.toBytes("city"),Bytes.toBytes("hyderabad"));
+        put.addColumn(Bytes.toBytes("personal"), Bytes.toBytes("city"),Bytes.toBytes("hyderabad"));
 
-        p.add(Bytes.toBytes("professional"),Bytes.toBytes("designation"), Bytes.toBytes("manager"));
+        put.addColumn(Bytes.toBytes("professional"),Bytes.toBytes("designation"), Bytes.toBytes("manager"));
 
-        p.add(Bytes.toBytes("professional"),Bytes.toBytes("salary"), Bytes.toBytes("50000"));
+        put.addColumn(Bytes.toBytes("professional"),Bytes.toBytes("salary"), Bytes.toBytes("50000"));
 
-        // Saving the put Instance to the HTable.
-        hTable.put(p);
+        TableName tableName = TableName.valueOf("test");
+        //得到 table
+        Table table = connection.getTable(tableName);
+        //执行插入
+        table.put(put);
         System.out.println("data inserted");
 
-        // closing HTable
-        hTable.close();
     }
 }
