@@ -1,33 +1,41 @@
-package admin;
+package client;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.client.Connection;
 import org.apache.hadoop.hbase.*;
 import org.apache.hadoop.hbase.client.*;
+import org.apache.hadoop.hbase.util.Bytes;
 
 import java.io.IOException;
 
-public class ShutDown
+public class ReadData
 {
     private static Configuration configuration;
     private static Connection connection;
-    private static Admin admin;
 
-    public static void main(String[] args) throws IOException
+    public static void main (String[] args) throws IOException
     {
         System.out.println("Tested.");
+
         configuration = HBaseConfiguration.create();
         configuration.set("hbase.zookeeper.quorum","34.80.213.98");
         configuration.set("hbase.zookeeper.property.clientPort","2181");
         configuration.set("hbase.master", "34.80.213.98:16010");
 
         connection = ConnectionFactory.createConnection(configuration);
-        admin = connection.getAdmin();
+        TableName tableName = TableName.valueOf(args[0]);
+        Table table = connection.getTable(tableName);
+        Get get = new Get(Bytes.toBytes("row1"));
+        Result set = table.get(get);
+        Cell[] cells  = set.rawCells();
 
-        // Shutting down HBase
-        System.out.println("Shutting down hbase");
-        admin.shutdown();
+        for(Cell cell:cells)
+        {
+            System.out.println(Bytes.toString(cell.getQualifierArray(), cell.getQualifierOffset(), cell.getQualifierLength())+"::"+
+                    Bytes.toString(cell.getValueArray(), cell.getValueOffset(), cell.getValueLength()));
+        }
+        table.close();
         connection.close();
     }
 }

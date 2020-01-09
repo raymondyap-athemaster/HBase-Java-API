@@ -21,9 +21,9 @@ public class ListTable
         System.out.println("Tested.\n");
 
         configuration = HBaseConfiguration.create();
-        configuration.set("hbase.zookeeper.quorum","35.229.149.35");
+        configuration.set("hbase.zookeeper.quorum","34.80.213.98");
         configuration.set("hbase.zookeeper.property.clientPort","2181");
-        configuration.set("hbase.master", "35.229.149.35:16010");
+        configuration.set("hbase.master", "34.80.213.98:16010");
 
         connection = ConnectionFactory.createConnection(configuration);
         admin =connection.getAdmin();
