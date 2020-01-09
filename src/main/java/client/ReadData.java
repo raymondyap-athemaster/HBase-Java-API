@@ -30,11 +30,13 @@ public class ReadData
         Result set = table.get(get);
         Cell[] cells  = set.rawCells();
 
+        StringBuilder result = null;
         for(Cell cell:cells)
         {
-            System.out.println(Bytes.toString(cell.getQualifierArray(), cell.getQualifierOffset(), cell.getQualifierLength())+"::"+
-                    Bytes.toString(cell.getValueArray(), cell.getValueOffset(), cell.getValueLength()));
+            //System.out.println(Bytes.toString(cell.getQualifierArray(), cell.getQualifierOffset(), cell.getQualifierLength())+"::"+Bytes.toString(cell.getValueArray(), cell.getValueOffset(), cell.getValueLength()));
+            result.append(Bytes.toString(cell.getQualifierArray(), cell.getQualifierOffset(), cell.getQualifierLength())).append("::").append(Bytes.toString(cell.getValueArray(), cell.getValueOffset(), cell.getValueLength())).append("\n");
         }
+        System.out.println(result.toString());
         table.close();
         connection.close();
     }
